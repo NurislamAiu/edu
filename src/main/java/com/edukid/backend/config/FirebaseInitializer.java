@@ -6,7 +6,8 @@ import com.google.firebase.FirebaseOptions;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Component;
 
-import java.io.InputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 @Component
 public class FirebaseInitializer {
@@ -14,7 +15,8 @@ public class FirebaseInitializer {
     @PostConstruct
     public void init() {
         try {
-            InputStream serviceAccount = getClass().getResourceAsStream("/firebase-key.json");
+            // ✅ Используем путь, в который Render кладёт secret-файлы
+            FileInputStream serviceAccount = new FileInputStream("/etc/secrets/firebase-key.json");
 
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(serviceAccount))
@@ -22,7 +24,8 @@ public class FirebaseInitializer {
 
             FirebaseApp.initializeApp(options);
             System.out.println("✅ Firebase initialized!");
-        } catch (Exception e) {
+        } catch (IOException e) {
+            System.err.println("❌ Firebase initialization failed:");
             e.printStackTrace();
         }
     }
