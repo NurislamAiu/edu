@@ -1,14 +1,13 @@
-# Используем официальный образ JDK 17
-FROM eclipse-temurin:17-jdk
+FROM eclipse-temurin:17-jdk-alpine
 
-# Устанавливаем рабочую директорию
+# Установка рабочей директории
 WORKDIR /app
 
-# Копируем всё в контейнер
-COPY . .
+# Копирование JAR-файла
+COPY target/*.jar app.jar
 
-# Собираем проект
-RUN ./mvnw clean package -DskipTests
+# 🔐 Копирование Firebase-ключа (убедись, что он рядом с Dockerfile)
+COPY firebase-key.json /etc/secrets/firebase-key.json
 
-# Запускаем собранный jar
-CMD ["java", "-jar", "target/edukid-0.0.1-SNAPSHOT.jar"]
+# Запуск приложения
+ENTRYPOINT ["java", "-jar", "app.jar"]
