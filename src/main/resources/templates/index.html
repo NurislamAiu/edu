@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>EduKid — Детский сад</title>
+  <link rel="stylesheet" href="/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="top-banner">
+    <span th:text="${bannerText}">Загрузка...</span>
+  </div>
+
+  <!-- Хедер -->
+  <header>
+    <div class="container header-flex relative">
+      <!-- ЛОГО -->
+      <div class="logo">
+        <img src="assets/logo.png" alt="" width="48" height="48">
+        <span>Orynqul</span>
+      </div>
+
+      <!-- НАВИГАЦИЯ -->
+      <div class="nav-wrapper" id="navWrapper">
+        <nav>
+          <a href="#">Главная</a>
+          <a href="#about">О нас</a>
+          <a href="#programs">Программы</a>
+          <a href="#news">Новости</a>
+          <a href="#reviews">Отзывы</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+      </div>
+
+      <!-- КНОПКА ЗАЯВКИ -->
+      <button class="apply-btn" onclick="scrollToContacts()">Подать заявку</button>
+
+    </div>
+  </header>
+
+  <!-- Волна сверху -->
+  <div class="wave-top">
+    <svg viewBox="0 0 1440 60" width="100%" height="60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 Q360,60 720,30 T1440,30 V60 H0 V30Z" fill="#e0f7fa"/>
+    </svg>
+  </div>
+
+  <!-- Главный блок -->
+  <section class="hero">
+    <div class="container hero-flex">
+      <div class="hero-content">
+        <div class="hero-label">Ясли сад</div>
+        <h2>Лучшая образовательная программа для детей</h2>
+        <button class="apply-btn big" onclick="scrollToContacts()">Подать заявку</button>
+      </div>
+      <div class="hero-image-block">
+        <img class="decor swirl" src="/assets/decor/swirl.svg" alt="Завитушка">
+        <img class="decor smile" src="/assets/decor/smile.svg" alt="Смайлик">
+        <img class="decor drop-blue" src="/assets/decor/drop-blue.svg" alt="Капля бирюзовая">
+        <img class="decor drop-orange" src="/assets/decor/drop-orange.svg" alt="Капля оранжевая">
+        <div class="hero-image-bg">
+          <img src="/assets/kid.png" alt="Ребёнок">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Волна снизу -->
+  <div class="wave-bottom">
+    <svg viewBox="0 0 1440 60" width="100%" height="60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0,30 Q360,0 720,30 T1440,30 V0 H0 V30Z" fill="#e0f7fa"/>
+    </svg>
+  </div>
+
+  <section id="programs" class="programs">
+    <h2>Наши программы</h2>
+    <p class="programs-desc">Многоуровневый детский сад для детей 2–5 лет<br>с программой, ориентированной на ребёнка.</p>
+    <div class="programs-cards">
+      <!-- Sport Class -->
+      <div class="program-card">
+        <div class="program-icon">
+          <img src="/assets/icons/sport.svg" alt="Спорт">
+        </div>
+        <h3>Спортивные занятия</h3>
+        <p>Каждый день в нашем детском саду — это праздник.<br>Мы любим все виды спорта!</p>
+        <button class="program-btn" onclick="openInstagram()">Подробнее</button>
+      </div>
+      <!-- Music Class (active) -->
+      <div class="program-card active">
+        <div class="program-icon">
+          <img src="/assets/icons/music.svg" alt="Музыка">
+        </div>
+        <h3>Музыкальные занятия</h3>
+        <p>Музыкальные занятия в помещении и на улице<br>для всестороннего развития!</p>
+        <button class="program-btn" onclick="openInstagram()">Подробнее</button>
+      </div>
+      <!-- Drawing Class -->
+      <div class="program-card">
+        <div class="program-icon">
+          <img src="/assets/icons/drawing.svg" alt="Рисование">
+        </div>
+        <h3>Рисование</h3>
+        <p>Творческие проекты и поделки<br>для совместной работы детей!</p>
+        <button class="program-btn" onclick="openInstagram()">Подробнее</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-edukid">
+    <div class="about-container">
+      <div class="about-left">
+        <h2>Узнайте больше о нас</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item active">
+            <button class="accordion-title" id="faq-q1">
+              С какого возраста принимаются дети?
+              <span class="icon">−</span>
+            </button>
+            <div class="accordion-content" id="faq-a1" style="display: block;">
+              Мы принимаем детей с 2 лет. Для самых маленьких у нас предусмотрена адаптационная программа.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-title" id="faq-q2">
+              Как организовано питание?
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content" id="faq-a2">
+              В детском саду предусмотрено 4-разовое сбалансированное питание с учётом возрастных норм и возможных аллергий.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-title" id="faq-q3">
+              Какие занятия проходят в садике?
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content" id="faq-a3">
+              Мы предлагаем развивающие занятия: логика, речь, творчество, музыка, английский язык и физическая активность.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-title" id="faq-q4">
+              Есть ли прогулки на свежем воздухе?
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content" id="faq-a4">
+              Да, дети гуляют два раза в день на огороженной и безопасной территории под присмотром воспитателей.
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-title" id="faq-q5">
+              Как можно записаться в детский сад?
+              <span class="icon">+</span>
+            </button>
+            <div class="accordion-content" id="faq-a5">
+              Вы можете оставить заявку на сайте, позвонить нам или прийти лично для знакомства и экскурсии по саду.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right">
+        <div class="about-img-wrap">
+          <img src="/assets/kid2.png" alt="Дети играют">
+          <div class="about-img-curve"></div>
+        </div>
+        <img class="about-decor" src="/assets/decor/lines.svg" alt="Завитушка">
+      </div>
+    </div>
+  </section>
+
+  <section class="teachers">
+    <h2>Наши лучшие педагоги</h2>
+    <p class="teachers-desc" id="teachers-desc">
+        Наша команда педагогов — это опытные и заботливые специалисты, которые помогают каждому ребёнку раскрыть свои таланты, учиться с радостью и развиваться в дружелюбной атмосфере.
+    </p>
+    <div class="teachers-cards">
+      <div class="teacher-card" th:each="teacher : ${teachers}">
+        <img th:src="${teacher.photo}" th:alt="${teacher.name}">
+        <div class="teacher-info">
+          <div class="teacher-name" th:text="${teacher.name}"></div>
+          <div class="teacher-role" th:text="${teacher.role}"></div>
+        </div>
+        <div class="teacher-socials">
+          <a href="https://wa.me/77755511159" target="_blank">
+            <img src="/assets/icons/whatsapp.svg" alt="WhatsApp">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="parent-says">
+    <div class="parent-says-container">
+      <!-- Видео -->
+      <div class="parent-says-left">
+        <div class="parent-video-bg">
+          <video id="parentVideo" poster="/assets/kid.png" width="100%" height="100%">
+            <source src="/assets/videos/review1.mp4" type="video/mp4" />
+          </video>
+
+          <button class="parent-play-btn" id="playBtn" aria-label="Play video">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="28" stroke="#fff" stroke-width="2" fill="none"/>
+              <polygon points="25,20 45,30 25,40" fill="#fff"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Отзывы -->
+      <div class="parent-says-right">
+        <img class="parent-decor swirl" src="/assets/decor/kavichka.svg" alt="Декор">
+        <h2>Отзывы родителей</h2>
+
+        <div class="parent-slider">
+          <div class="parent-slide" th:each="review, iterStat : ${reviews}"
+               th:classappend="${iterStat.index == 0} ? 'active'">
+            <p class="parent-quote" th:text="${review.text}">Отзыв</p>
+            <div class="parent-author">
+              <img th:src="${review.photo}" th:alt="${review.parent}" />
+              <span th:text="${review.parent}">Родитель</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="parent-slider-dots">
+        <span class="dot"
+              th:each="review, iterStat : ${reviews}"
+              th:classappend="${iterStat.index == 0} ? 'active'"
+              th:attr="data-index=${iterStat.index}"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news" class="news">
+    <h2>Новости</h2>
+    <p class="news-desc">
+      Наша цель — предоставить каждому ребёнку, посещающему нашу детскую сад, возможности для развития, соответствующие возрасту.
+    </p>
+    <div class="news-cards">
+      <div class="news-card" th:each="item : ${newsList}">
+        <div class="news-img-wrap">
+          <img th:src="${item.image}" th:alt="${item.title}">
+        </div>
+        <div class="news-title" th:text="${item.title}">Новость</div>
+        <a th:href="${item.link}" class="news-btn">Подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section id="contacts" class="newsletter-section">
+    <div class="newsletter-bg">
+      <div class="newsletter-content">
+        <h2 id="newsletter-title">Оставьте свой номер</h2>
+        <p id="newsletter-desc">Оставьте номер телефона, и мы свяжемся с вами или добавим в рассылку</p>
+        <form class="newsletter-form" onsubmit="submitPhone(event)">
+          <input type="tel" id="newsletter-phone" name="phone" placeholder="+7 (___) ___-__-__" required pattern="^\+?[0-9\s\-()]{10,20}$">
+          <button type="submit" id="newsletter-btn">
+    <span class="newsletter-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M2 11L20 2L11 20L10 12L2 11Z" fill="#fff"/>
+      </svg>
+    </span>
+            <span id="newsletter-btn-text">Отправить</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1440 60" width="100%" height="60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,30 Q360,60 720,30 T1440,30 V60 H0 V30Z" fill="#e0f7fa"/>
+      </svg>
+    </div>
+    <div class="footer-container">
+      <div class="footer-col footer-brand">
+        <div class="footer-logo">
+          <img src="assets/logo.png" alt="" width="48" height="48">
+        </div>
+        <div class="footer-desc" id="footer-desc">
+          Наша цель — предоставить каждому ребёнку, посещающему Orynqul, возможности для развития, соответствующие возрасту.
+        </div>
+      </div>
+      <div class="footer-col footer-contacts">
+        <ul>
+          <li>
+            <span class="footer-icon">
+              <svg width="22" height="22" fill="none"><path d="M9 2C5.13 2 2 5.13 2 9c0 5.25 7 11 7 11s7-5.75 7-11c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 9 6a2.5 2.5 0 0 1 0 5.5z" fill="#1ccfcf"/></svg>
+            </span>
+            <span class="footer-contact-text">Жамбылская область, <br>Байзакский район, <br>Село Туймекент <br>Ул. Дукенбай кызы 34</span>
+          </li>
+          <li>
+            <span class="footer-icon">
+              <svg width="22" height="22" fill="none"><path d="M6.62 10.79a15.053 15.053 0 0 0 4.59 4.59l1.53-1.53a1 1 0 0 1 1.11-.21c1.21.49 2.53.76 3.9.76a1 1 0 0 1 1 1V17a1 1 0 0 1-1 1C5.92 18 2 14.08 2 9a1 1 0 0 1 1-1h2.5a1 1 0 0 1 1 1c0 1.37.27 2.69.76 3.9a1 1 0 0 1-.21 1.11l-1.53 1.53z" fill="#1ccfcf"/></svg>
+            </span>
+            <span class="footer-contact-text">Директор: <br> Болтаева Улжан</span>
+          </li>
+          <li>
+            <span class="footer-icon">
+              <svg width="22" height="22" fill="none"><path d="M2 4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4zm2 0v10h10V4H4zm1 2h8v2H5V6zm0 4h8v2H5v-2z" fill="#1ccfcf"/></svg>
+            </span>
+            <span class="footer-contact-text">yeu.adin@gmail.com</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+  <script src="/script.js"></script>
+  <script>
+    async function submitPhone(event) {
+      event.preventDefault();
+      const phoneInput = document.getElementById("newsletter-phone");
+      const rawPhone = phoneInput.value.trim();
+
+      if (!rawPhone) return;
+
+      const phone = rawPhone.replace(/\D/g, '');
+
+      try {
+        await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone: '+' + phone })
+        });
+
+        // Перейти на WhatsApp с номером
+        window.location.href = `https://wa.me/${77755511159}`;
+      } catch (err) {
+        alert("Ошибка при отправке. Попробуйте позже.");
+      }
+    }
+  </script>
+  <script>
+    function scrollToContacts() {
+      const section = document.getElementById("contacts");
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      } else {
+        console.warn("Секция #contacts не найдена!");
+      }
+    }
+  </script>
+  <script>
+    function openInstagram() {
+      const username = "orynkul_balabaqshasy";
+      const appLink = `instagram://user?username=${username}`;
+      const webLink = `https://instagram.com/${username}`;
+
+      window.location = appLink;
+
+      setTimeout(() => {
+        window.open(webLink, '_blank');
+      }, 500);
+    }
+  </script>
+</body>
+</html>
